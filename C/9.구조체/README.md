@@ -142,3 +142,38 @@ void main() {
     printf("%s %d %d \n", p->name, p->kor, p->math); // PARK GS
 }
 ```
+
+## 함수와 구조체
+### 구조체를 함수의 매개변수로 사용
+``` C
+struct num calc(struct num number2)
+```
+`반환 자료형`이 struct num형인 구조체이고  struct num형의 구조체를 `매개변수`로 갖는 함수
+### 구조체 포인터를 함수의 매개변수로 사용
+구조체를 복사하지 않기 때문에 실행속도가 향상되고 메모리 사용효율도 좋다
+``` C
+struct num calc(struct num*);
+```
+
+### typedef
+이미 존재하는 자료형에 새로운 이름을 붙이기 위한 키워드
+``` C
+typedef unsigned int BYTE; // unsigned int형을 BYTE라는 새로운 이름으로 정의
+BYTE val;
+```
+
+## 구조체의 비트필드
+메모리를 byte단위가 아닌 `bit` 단위로 사용
+``` C
+struct test {
+    unsigned short a:4;
+    unsigned short b:2;
+    unsigned short c:1;
+    unsigned short d:7;
+};
+struct test bit; // 구조체 비트필드 변수의 선언
+```
+> **주의사항**
+> - 비트필드의 자료형은 int나 unsigned로 선언되어야 함
+> - 비트필드에 대한 포인터나 배열은 사용 안됨
+> - 비트필드의 전체크기는 시스템이 제공하는 int의 크기 이내여야 함
